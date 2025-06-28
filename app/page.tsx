@@ -368,13 +368,13 @@ export default function GroupPurchasePage() {
       params.append("data", JSON.stringify(orderData))
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec",
+        "https://script.google.com/macros/s/AKfycbwCVk8WRr976col2dWXhcrLGhFcRLA2TlH5x9BEfqFSWGEsWaq1B_UEvAfPQsuAxt8k/exec",
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/json",
           },
-          body: params.toString(),
+          body: JSON.stringify(orderData),
         }
       )
 
