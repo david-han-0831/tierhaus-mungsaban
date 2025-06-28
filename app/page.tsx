@@ -363,66 +363,25 @@ export default function GroupPurchasePage() {
     }
 
     try {
-      console.log("전송할 데이터:", orderData)
+      // URL 인코딩 방식으로 전송
+      const params = new URLSearchParams()
+      params.append("data", JSON.stringify(orderData))
 
-      // 모바일과 데스크톱 모두 지원하는 방식
-      const formData = new FormData()
-      formData.append("data", JSON.stringify(orderData))
-
-      // 첫 번째 시도: fetch API 사용
-      try {
-        await fetch(
-          "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec",
-          {
-            method: "POST",
-            mode: "no-cors",
-            body: formData,
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-        )
-        console.log("fetch 방식으로 전송 완료")
-      } catch (fetchError) {
-        console.log("fetch 실패, iframe 방식으로 재시도:", fetchError)
+          body: params.toString(),
+        }
+      )
 
-        // 두 번째 시도: iframe 방식 (데스크톱 백업)
-        const iframe = document.createElement("iframe")
-        iframe.style.display = "none"
-        iframe.name = "hidden_iframe"
-        document.body.appendChild(iframe)
-
-        const form = document.createElement("form")
-        form.method = "POST"
-        form.action =
-          "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec"
-        form.target = "hidden_iframe"
-
-        const input = document.createElement("input")
-        input.type = "hidden"
-        input.name = "data"
-        input.value = JSON.stringify(orderData)
-        form.appendChild(input)
-
-        document.body.appendChild(form)
-        form.submit()
-
-        // 정리
-        setTimeout(() => {
-          try {
-            document.body.removeChild(form)
-            document.body.removeChild(iframe)
-          } catch (cleanupError) {
-            console.log("정리 중 오류:", cleanupError)
-          }
-        }, 2000)
-      }
-
-      // 성공 처리
       setIsSubmitted(true)
-
-      // 폼 초기화
       setProducts(products.map((p) => ({ ...p, quantity: 0 })))
       setCustomerInfo({ name: "", phone: "", address: "", message: "" })
     } catch (error) {
-      console.error("주문 전송 실패:", error)
       alert("주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.")
     } finally {
       setIsSubmitting(false)
