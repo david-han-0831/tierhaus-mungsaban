@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: '멍사반 X 티어하우스 수제간식 공동구매',
-  description: 'Created with v0',
+  description: '멍사반 공구방에서 진행하는 반려동물 수제간식 전문점, 티어하우스 전 제품 공구 주문서입니다.',
   generator: 'v0.dev',
   openGraph: {
     title: '멍사반 X 티어하우스 수제간식 공동구매',
