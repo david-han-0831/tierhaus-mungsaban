@@ -330,7 +330,7 @@ export default function GroupPurchasePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-
+    
     // 입력 검증
     if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
       alert("필수 정보를 모두 입력해주세요.")
@@ -363,26 +363,19 @@ export default function GroupPurchasePage() {
     }
 
     try {
-      // URL 인코딩 방식으로 전송
-      const params = new URLSearchParams()
-      params.append("data", JSON.stringify(orderData))
-
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwCVk8WRr976col2dWXhcrLGhFcRLA2TlH5x9BEfqFSWGEsWaq1B_UEvAfPQsuAxt8k/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-        }
-      )
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      })
 
       setIsSubmitted(true)
       setProducts(products.map((p) => ({ ...p, quantity: 0 })))
-      setCustomerInfo({ name: "", phone: "", address: "", message: "" })
+      setCustomerInfo({ name: '', phone: '', address: '', message: '' })
     } catch (error) {
-      alert("주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\n" + error)
+      alert('주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\n' + error)
     } finally {
       setIsSubmitting(false)
     }
