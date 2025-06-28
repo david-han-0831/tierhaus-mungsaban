@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/logo/공동구매 로고.png', // 
-        width: 1200,
+        width: 1100,
         height: 630,
         alt: '멍사반 X 티어하우스 수제간식 공동구매',
       },
