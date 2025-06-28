@@ -314,6 +314,7 @@ export default function GroupPurchasePage() {
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const updateQuantity = (id: number, change: number) => {
     setProducts(
@@ -347,10 +348,12 @@ export default function GroupPurchasePage() {
       return
     }
 
+    setIsSubmitting(true)
+
     const orderData = {
       customerInfo: {
         ...customerInfo,
-        phone: "'" + customerInfo.phone, // 앞에 작은따옴표 추가로 텍스트 형태로 저장
+        phone: "'" + customerInfo.phone,
       },
       products: selectedProducts,
       totalProductPrice,
@@ -362,32 +365,55 @@ export default function GroupPurchasePage() {
     try {
       console.log("전송할 데이터:", orderData)
 
-      // Hidden iframe을 사용한 form submit 방식
-      const iframe = document.createElement("iframe")
-      iframe.style.display = "none"
-      iframe.name = "hidden_iframe"
-      document.body.appendChild(iframe)
+      // 모바일과 데스크톱 모두 지원하는 방식
+      const formData = new FormData()
+      formData.append("data", JSON.stringify(orderData))
 
-      const form = document.createElement("form")
-      form.method = "POST"
-      form.action =
-        "https://script.google.com/macros/s/AKfycbzTGO6Cn3U43--RlJQ8tR3XsZ_UhM6mw5xcRc1twuZcIDL4ZbOLQaIUuJu7TeTWJws9/exec"
-      form.target = "hidden_iframe"
+      // 첫 번째 시도: fetch API 사용
+      try {
+        await fetch(
+          "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec",
+          {
+            method: "POST",
+            mode: "no-cors",
+            body: formData,
+          },
+        )
+        console.log("fetch 방식으로 전송 완료")
+      } catch (fetchError) {
+        console.log("fetch 실패, iframe 방식으로 재시도:", fetchError)
 
-      const input = document.createElement("input")
-      input.type = "hidden"
-      input.name = "data"
-      input.value = JSON.stringify(orderData)
-      form.appendChild(input)
+        // 두 번째 시도: iframe 방식 (데스크톱 백업)
+        const iframe = document.createElement("iframe")
+        iframe.style.display = "none"
+        iframe.name = "hidden_iframe"
+        document.body.appendChild(iframe)
 
-      document.body.appendChild(form)
-      form.submit()
+        const form = document.createElement("form")
+        form.method = "POST"
+        form.action =
+          "https://script.google.com/macros/s/AKfycbwZn5s_h13BBemQ7Zl3fLAdDgwz23K_-WPbbwbtwyM6ZpN_rXmR1Szk8NLV2Y3SKLl8/exec"
+        form.target = "hidden_iframe"
 
-      // 폼과 iframe 제거
-      setTimeout(() => {
-        document.body.removeChild(form)
-        document.body.removeChild(iframe)
-      }, 1000)
+        const input = document.createElement("input")
+        input.type = "hidden"
+        input.name = "data"
+        input.value = JSON.stringify(orderData)
+        form.appendChild(input)
+
+        document.body.appendChild(form)
+        form.submit()
+
+        // 정리
+        setTimeout(() => {
+          try {
+            document.body.removeChild(form)
+            document.body.removeChild(iframe)
+          } catch (cleanupError) {
+            console.log("정리 중 오류:", cleanupError)
+          }
+        }, 2000)
+      }
 
       // 성공 처리
       setIsSubmitted(true)
@@ -397,7 +423,9 @@ export default function GroupPurchasePage() {
       setCustomerInfo({ name: "", phone: "", address: "", message: "" })
     } catch (error) {
       console.error("주문 전송 실패:", error)
-      alert("주문 전송에 실패했습니다. 다시 시도해주세요.")
+      alert("주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
