@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Minus, Plus } from "lucide-react"
+import { Minus, Plus, Loader } from "lucide-react"
 
 interface Product {
   id: number
@@ -575,6 +575,15 @@ export default function GroupPurchasePage() {
               }} className="bg-[#8f001e] hover:bg-[#7a0019]">
                 확인
               </Button>
+            </div>
+          </div>
+        )}
+        {/* 로딩 화면 */}
+        {isSubmitting && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center z-[100]">
+            <div className="bg-white rounded-lg p-8 flex flex-col items-center shadow-lg">
+              <Loader className="animate-spin w-10 h-10 text-[#8f001e] mb-4" />
+              <div className="text-[#8f001e] font-semibold text-lg">신청을 처리 중입니다...<br/>잠시만 기다려주세요.</div>
             </div>
           </div>
         )}
