@@ -553,7 +553,7 @@ export default function GroupPurchasePage() {
           <Button
             type="submit"
             className="w-full bg-[#8f001e] hover:bg-[#7a0019] text-white py-4 text-lg font-semibold"
-            disabled={totalProductPrice === 0}
+            disabled={totalProductPrice === 0 || isSubmitting}
           >
             공구 신청하기
           </Button>
@@ -569,7 +569,10 @@ export default function GroupPurchasePage() {
                 <br />
                 입금 확인 후 배송 준비하겠습니다.
               </p>
-              <Button onClick={() => setIsSubmitted(false)} className="bg-[#8f001e] hover:bg-[#7a0019]">
+              <Button onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setIsSubmitted(false)
+              }} className="bg-[#8f001e] hover:bg-[#7a0019]">
                 확인
               </Button>
             </div>
