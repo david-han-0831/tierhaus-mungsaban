@@ -406,8 +406,9 @@ export default function GroupPurchasePage() {
       {/* 헤더 */}
       <header className="bg-[#8f001e] py-4 px-4 flex items-center min-h-[100px]">
         <div className="max-w-4xl mx-auto flex justify-center items-center w-full">
-          <h1 className="text-2xl md:text-3xl font-bold text-[white] text-center">
-            멍사반 X 티어하우스 수제간식 공동구매 오픈!
+          <h1 className="text-2xl md:text-3xl font-bold text-[white] text-center leading-tight">
+            멍사반 X 티어하우스<br className="block" />
+            수제간식 공동 구매 오픈!
           </h1>
         </div>
       </header>
@@ -432,49 +433,42 @@ export default function GroupPurchasePage() {
                   className="flex flex-col md:flex-row items-start md:items-center p-4 border rounded-lg gap-4"
                 >
                   {/* 상품 이미지 */}
-                  <div className="w-full md:w-24 h-24 flex-shrink-0">
+                  <div className="w-full md:w-24 aspect-[4/3] flex-shrink-0 overflow-hidden flex items-center justify-center bg-white">
                     {product.imageUrl ? (
                       <img
                         src={product.imageUrl || "/placeholder.svg"}
                         alt={product.name}
-                        className="w-full h-full object-cover rounded-lg border"
+                        className="w-full h-full object-contain rounded-lg border bg-white"
                       />
                     ) : (
                       <div className="w-full h-full bg-gray-200 rounded-lg border flex items-center justify-center">
                         <span className="text-gray-400 text-xs text-center">
-                          이미지
-                          <br />
-                          준비중
+                          이미지<br />준비중
                         </span>
                       </div>
                     )}
                   </div>
-
-                  {/* 상품 정보 */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-lg mb-2 text-[#333333]">{product.name}</h3>
-                    <div className="flex items-center gap-3">
-                      <span className="text-red-500 line-through text-sm">
-                        {product.originalPrice.toLocaleString()}원
-                      </span>
+                  {/* 상품 정보 + 가격 + 수량을 세로로, 모두 가운데 정렬 */}
+                  <div className="flex flex-1 flex-col items-center justify-center gap-2 w-full">
+                    <h3 className="font-semibold text-lg text-[#333333] text-center whitespace-nowrap">{product.name}</h3>
+                    <div className="flex flex-row items-center justify-center gap-2">
+                      <span className="text-red-500 line-through text-sm">{product.originalPrice.toLocaleString()}원</span>
                       <span className="text-[#8f001e] font-bold text-xl">{product.groupPrice.toLocaleString()}원</span>
                     </div>
-                  </div>
-
-                  {/* 수량 조절 */}
-                  <div className="flex items-center gap-3 w-full md:w-auto justify-center">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => updateQuantity(product.id, -1)}
-                      disabled={product.quantity === 0}
-                    >
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                    <span className="w-12 text-center font-semibold">{product.quantity}</span>
-                    <Button variant="outline" size="sm" onClick={() => updateQuantity(product.id, 1)}>
-                      <Plus className="h-4 w-4" />
-                    </Button>
+                    <div className="flex items-center gap-3 justify-center mt-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => updateQuantity(product.id, -1)}
+                        disabled={product.quantity === 0}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                      <span className="w-12 text-center font-semibold">{product.quantity}</span>
+                      <Button variant="outline" size="sm" onClick={() => updateQuantity(product.id, 1)}>
+                        <Plus className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               ))}

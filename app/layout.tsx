@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: '멍사반 X 티어하우스',
     locale: 'ko_KR',
-    url: 'https://tierhaus-group-purchase.com', // 실제 배포 URL로 교체 필요
+    url: 'https://tierhaus-mungsaban.vercel.app/', // 실제 배포 URL로 교체 필요
     images: [
       {
-        url: '/logo/tierhaus_logo_2.png', // 실제 OG 이미지 경로로 교체 가능
+        url: '/logo/공동구매 로고.png', // 실제 OG 이미지 경로로 교체 가능
         width: 1200,
         height: 630,
         alt: '멍사반 X 티어하우스 수제간식 공동구매',
