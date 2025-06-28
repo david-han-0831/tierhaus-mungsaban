@@ -42,7 +42,7 @@ export default function GroupPurchasePage() {
   const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
-      name: "닭 안심 육포",
+      name: "닭 안심 육포 80g",
       originalPrice: 10000,
       groupPrice: 8500,
       quantity: 0,
@@ -50,7 +50,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 2,
-      name: "조각 닭 안심 육포",
+      name: "조각 닭 안심 육포 90g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -58,7 +58,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 3,
-      name: "오리 안심 육포",
+      name: "오리 안심 육포 50g",
       originalPrice: 10000,
       groupPrice: 8500,
       quantity: 0,
@@ -66,7 +66,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 4,
-      name: "조각 오리 안심 육포",
+      name: "조각 오리 안심 육포 65g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -74,7 +74,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 5,
-      name: "오리 도가니 안심 말이 (작은 사이즈)",
+      name: "오리 도가니 안심 말이 (작은 사이즈) 80g",
       originalPrice: 13000,
       groupPrice: 11500,
       quantity: 0,
@@ -82,7 +82,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 6,
-      name: "오리 도가니 안심 말이 (큰 사이즈)",
+      name: "오리 도가니 안심 말이 (큰 사이즈) 120g",
       originalPrice: 13000,
       groupPrice: 11500,
       quantity: 0,
@@ -90,7 +90,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 7,
-      name: "오리 통 다리",
+      name: "오리 통 다리 (2PCS.)",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -122,7 +122,7 @@ export default function GroupPurchasePage() {
     // },
     {
       id: 11,
-      name: "알 메추리",
+      name: "알 메추리 (2PCS.)",
       originalPrice: 13000,
       groupPrice: 11500,
       quantity: 0,
@@ -130,7 +130,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 12,
-      name: "조각 알 메추리",
+      name: "조각 알 메추리 (2PCS.)",
       originalPrice: 15000,
       groupPrice: 13500,
       quantity: 0,
@@ -138,7 +138,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 13,
-      name: "칠면조 통 목 뼈",
+      name: "칠면조 통 목 뼈 (1PC.)",
       originalPrice: 17000,
       groupPrice: 14500,
       quantity: 0,
@@ -146,7 +146,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 14,
-      name: "칠면조 목 뼈 (사등분)",
+      name: "칠면조 목 뼈 (사등분, 1PC.)",
       originalPrice: 17000,
       groupPrice: 14500,
       quantity: 0,
@@ -154,7 +154,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 15,
-      name: "칠면조 목 뼈 슬라이스",
+      name: "칠면조 목 뼈 슬라이스 80g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -162,7 +162,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 16,
-      name: "칠면조 통 다리",
+      name: "칠면조 통 다리 (1PC.)",
       originalPrice: 21000,
       groupPrice: 18000,
       quantity: 0,
@@ -170,7 +170,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 17,
-      name: "칠면조 다리 슬라이스",
+      name: "칠면조 다리 슬라이스 180g",
       originalPrice: 16000,
       groupPrice: 14000,
       quantity: 0,
@@ -178,7 +178,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 18,
-      name: "조각 칠면조 다리살 육포",
+      name: "조각 칠면조 다리살 육포 75g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -186,7 +186,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 19,
-      name: "칠면조 안심 육포",
+      name: "칠면조 안심 육포 50g",
       originalPrice: 10000,
       groupPrice: 8500,
       quantity: 0,
@@ -194,7 +194,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 20,
-      name: "조각 칠면조 안심 육포",
+      name: "조각 칠면조 안심 육포 70g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -202,7 +202,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 21,
-      name: "연어 스틱",
+      name: "연어 스틱 100g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -210,7 +210,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 22,
-      name: "조각 연어",
+      name: "조각 연어 80g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -218,7 +218,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 23,
-      name: "연어 스튜",
+      name: "연어 스튜 100ml",
       originalPrice: 7000,
       groupPrice: 6000,
       quantity: 0,
@@ -226,7 +226,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 24,
-      name: "한우 간 육포",
+      name: "한우 간 육포 100g",
       originalPrice: 13000,
       groupPrice: 11500,
       quantity: 0,
@@ -234,7 +234,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 25,
-      name: "조각 한우 간 육포",
+      name: "조각 한우 간 육포 90g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -242,7 +242,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 26,
-      name: "한우 간 파우더",
+      name: "한우 간 파우더 90g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -250,7 +250,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 27,
-      name: "말 갈비 (큰 사이즈)",
+      name: "말 갈비 (L 사이즈, 150g)",
       originalPrice: 16000,
       groupPrice: 14000,
       quantity: 0,
@@ -258,7 +258,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 28,
-      name: "말 갈비 (작은 사이즈)",
+      name: "말 갈비 (S 사이즈, 80g)",
       originalPrice: 10000,
       groupPrice: 8500,
       quantity: 0,
@@ -266,7 +266,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 29,
-      name: "얇은 말 꼬리 슬라이스",
+      name: "얇은 말 꼬리 슬라이스 80g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -274,7 +274,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 30,
-      name: "두꺼운 말 꼬리 슬라이스",
+      name: "두꺼운 말 꼬리 슬라이스 (1PC.)",
       originalPrice: 40000,
       groupPrice: 35000,
       quantity: 0,
@@ -282,7 +282,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 31,
-      name: "통 말 꼬리",
+      name: "통 말 꼬리 (1PC.)",
       originalPrice: 40000,
       groupPrice: 35000,
       quantity: 0,
@@ -290,7 +290,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 32,
-      name: "말고기 육포",
+      name: "말고기 육포 60g",
       originalPrice: 10000,
       groupPrice: 8500,
       quantity: 0,
@@ -298,7 +298,7 @@ export default function GroupPurchasePage() {
     },
     {
       id: 33,
-      name: "조각 말고기 육포",
+      name: "조각 말고기 육포 80g",
       originalPrice: 15000,
       groupPrice: 13000,
       quantity: 0,
@@ -308,6 +308,7 @@ export default function GroupPurchasePage() {
 
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
+    depositor: "",
     phone: "",
     address: "",
     message: "",
@@ -332,7 +333,7 @@ export default function GroupPurchasePage() {
     e.preventDefault()
     
     // 입력 검증
-    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
+    if (!customerInfo.name || !customerInfo.depositor || !customerInfo.phone || !customerInfo.address) {
       alert("필수 정보를 모두 입력해주세요.")
       return
     }
@@ -373,7 +374,7 @@ export default function GroupPurchasePage() {
 
       setIsSubmitted(true)
       setProducts(products.map((p) => ({ ...p, quantity: 0 })))
-      setCustomerInfo({ name: '', phone: '', address: '', message: '' })
+      setCustomerInfo({ name: '', depositor: '', phone: '', address: '', message: '' })
     } catch (error) {
       alert('주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\n' + error)
     } finally {
@@ -467,6 +468,15 @@ export default function GroupPurchasePage() {
                   value={customerInfo.name}
                   onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
                   placeholder="성함을 입력해주세요"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2 text-[#333333]">입금자명 *</label>
+                <Input
+                  value={customerInfo.depositor}
+                  onChange={(e) => setCustomerInfo({ ...customerInfo, depositor: e.target.value })}
+                  placeholder="입금자명을 입력해주세요"
                   required
                 />
               </div>
@@ -567,7 +577,9 @@ export default function GroupPurchasePage() {
               <p className="text-gray-600 mb-4">
                 정상적으로 접수되었습니다!
                 <br />
-                입금 확인 후 배송 준비하겠습니다.
+                입금 확인 후 배송 준비 시작되며,
+                <br />
+                공구 마감 후 일주일 내로 발송 예정입니다.
               </p>
               <Button onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' })

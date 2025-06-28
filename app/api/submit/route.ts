@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
   const NOTION_SECRET = process.env.NOTION_SECRET
-  const NOTION_DATABASE_ID = '22008a59-4422-8092-9857-e4eecda9ed21'
+  const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID
 
   console.log('로그 찍는다 ')
   console.log('🧪 NOTION_DATABASE_ID:', NOTION_DATABASE_ID)
@@ -20,9 +20,9 @@ export async function POST(req: NextRequest) {
   }
 
   const { customerInfo, products, totalProductPrice, shippingFee, totalPrice, timestamp } = data
-  const { name, phone, address, message } = customerInfo || {}
+  const { name, depositor, phone, address, message } = customerInfo || {}
 
-  if (!name || !phone || !address) {
+  if (!name || !depositor || !phone || !address) {
     return NextResponse.json({ ok: false, message: '❌ 필수 정보 누락' }, { status: 400 })
   }
 
@@ -37,6 +37,9 @@ export async function POST(req: NextRequest) {
         },
         '성함': {
             title: [{ text: { content: name } }],
+        },
+        '입금자명': {
+            rich_text: [{ text: { content: depositor } }],
         },
         '연락처': {
             phone_number: phone,
