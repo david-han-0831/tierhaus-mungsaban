@@ -1,0 +1,36 @@
+import type { Metadata } from 'next'
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: '멍사반 X 티어하우스 수제간식 공동구매',
+  description: 'Created with v0',
+  generator: 'v0.dev',
+  openGraph: {
+    title: '멍사반 X 티어하우스 수제간식 공동구매',
+    description: 'Created with v0',
+    type: 'website',
+    siteName: '멍사반 X 티어하우스',
+    locale: 'ko_KR',
+    url: 'https://tierhaus-group-purchase.com', // 실제 배포 URL로 교체 필요
+    images: [
+      {
+        url: '/logo/tierhaus_logo_2.png', // 실제 OG 이미지 경로로 교체 가능
+        width: 1200,
+        height: 630,
+        alt: '멍사반 X 티어하우스 수제간식 공동구매',
+      },
+    ],
+  },
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  )
+}
