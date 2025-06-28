@@ -382,7 +382,7 @@ export default function GroupPurchasePage() {
       setProducts(products.map((p) => ({ ...p, quantity: 0 })))
       setCustomerInfo({ name: "", phone: "", address: "", message: "" })
     } catch (error) {
-      alert("주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.")
+      alert("주문 전송에 실패했습니다. 잠시 후 다시 시도해주세요.\n" + error)
     } finally {
       setIsSubmitting(false)
     }
